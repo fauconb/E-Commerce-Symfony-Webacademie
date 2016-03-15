@@ -1,0 +1,81 @@
+{% extends 'AdminBundle:layout:base-layout.html.twig' %}
+
+{% block page_title %}Index Categorie{% endblock %}
+
+{% block page_subtitle %}Liste des catégorie{% endblock %}
+
+{% block page_content %}
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Hover Data Table</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                               aria-describedby="example2_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">ID
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Name
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Platform(s): activate to sort column ascending">Desc Min
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending">Desc Long
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending">Principale catégorie
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Action
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for categorie in categories %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('admin_categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a>
+                                    </td>
+                                    <td><a href="{{ path('admin_categorie_show', { 'id': categorie.id }) }}">{{ categorie.name }}</a></td>
+                                    <td>{{ categorie.descMin }}</td>
+                                    <td>{{ categorie.descLong }}</td>
+                                    <td>
+                                        {% if categorie.parent == null %}
+                                            Oui
+                                        {% else %}
+                                            Non
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success"
+                                           href="{{ path('admin_categorie_show', { 'id': categorie.id }) }}">show</a>
+
+                                        <a class="btn btn-warning"
+                                           href="{{ path('admin_categorie_edit', { 'id': categorie.id }) }}">edit</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <a href="{{ path('admin_categorie_new') }}" class="btn btn-default">Create a new entry</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+{% endblock page_content %}
+

@@ -1,0 +1,13 @@
+<!-- sidebar menu: : style can be found in sidebar.less -->
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+<ul class="sidebar-menu">
+    <li class="header">Adminatration du portfolio</li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-link"></i> <span>Gestion des Wall</span> <i
+                    class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+            <li><a href="{{ url('admin_article_new') }}">Crée un article</a></li>
+            <li><a href="{{ url('admin_article_index') }}">Liste des article</a></li>
+        </ul>
+    </li>
+</ul>

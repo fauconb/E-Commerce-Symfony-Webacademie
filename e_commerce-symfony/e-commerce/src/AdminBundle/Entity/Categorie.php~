@@ -1,0 +1,68 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Categorie
+ *
+ * @ORM\Table(name="categorie")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategorieRepository")
+ */
+class Categorie
+{
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+        $this->children = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="categorie")
+     */
+    private $articles;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Categorie", mappedBy="parent")
+     */
+    private $children;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Categorie", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    private $parent;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="desc_min", type="string", length=255)
+     */
+    private $descMin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="desc_long", type="text")
+     */
+    private $descLong;
+
+}

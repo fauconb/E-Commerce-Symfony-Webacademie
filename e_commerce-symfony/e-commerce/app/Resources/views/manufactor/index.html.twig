@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Manufactor list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Link</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for manufactor in manufactors %}
+            <tr>
+                <td><a href="{{ path('admin_manufactor_show', { 'id': manufactor.id }) }}">{{ manufactor.id }}</a></td>
+                <td>{{ manufactor.name }}</td>
+                <td>{{ manufactor.link }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_manufactor_show', { 'id': manufactor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_manufactor_edit', { 'id': manufactor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_manufactor_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

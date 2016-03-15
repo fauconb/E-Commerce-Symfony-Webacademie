@@ -1,0 +1,110 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Article_tva
+ *
+ * @ORM\Table(name="article_tva")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Article_tvaRepository")
+ */
+class Article_tva
+{
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="tva")
+     */
+    private $articles;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rate", type="integer")
+     */
+    private $rate;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param integer $rate
+     *
+     * @return Article_tva
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return int
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * Add article
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Article_tva
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \AppBundle\Entity\Article $article
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+}

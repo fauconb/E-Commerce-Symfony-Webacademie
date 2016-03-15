@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tax list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rate</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tax in taxes %}
+            <tr>
+                <td><a href="{{ path('admin_tax_show', { 'id': tax.id }) }}">{{ tax.id }}</a></td>
+                <td>{{ tax.rate }}</td>
+                <td>{{ tax.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_tax_show', { 'id': tax.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_tax_edit', { 'id': tax.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_tax_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

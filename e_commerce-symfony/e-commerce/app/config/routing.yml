@@ -1,0 +1,23 @@
+admin_manufactor:
+    resource: "@AdminBundle/Controller/ManufactorController.php"
+    type:     annotation
+
+
+admin_categorie:
+    resource: "@AdminBundle/Controller/CategorieController.php"
+    type:     annotation
+
+app_media:
+    resource: "@AppBundle/Controller/MediaController.php"
+    type:     annotation
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
