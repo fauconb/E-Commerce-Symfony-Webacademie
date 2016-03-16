@@ -1,3 +1,7 @@
+app_caddie:
+    resource: "@AppBundle/Controller/CaddieController.php"
+    type:     annotation
+
 admin_manufactor:
     resource: "@AdminBundle/Controller/ManufactorController.php"
     type:     annotation

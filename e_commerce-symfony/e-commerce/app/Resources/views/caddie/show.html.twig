@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Caddie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ caddie.id }}</td>
+            </tr>
+            <tr>
+                <th>Articlename</th>
+                <td>{{ caddie.articleName }}</td>
+            </tr>
+            <tr>
+                <th>Articleref</th>
+                <td>{{ caddie.articleRef }}</td>
+            </tr>
+            <tr>
+                <th>Articlequantity</th>
+                <td>{{ caddie.articleQuantity }}</td>
+            </tr>
+            <tr>
+                <th>Articleprice</th>
+                <td>{{ caddie.articlePrice }}</td>
+            </tr>
+            <tr>
+                <th>Articletax</th>
+                <td>{{ caddie.articleTax }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ caddie.userId }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ caddie.url }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('caddie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('caddie_edit', { 'id': caddie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
